@@ -55,8 +55,8 @@ export default function HeroSection() {
             <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center">
               <div className="max-w-2xl mt-24 animate-fade-in text-left">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="h-[2px] w-8 bg-secondary"></div>
-                  <span className="text-secondary font-bold tracking-widest text-sm uppercase">
+                  <div className="h-[2px] w-8 bg-sky-400"></div>
+                  <span className="text-sky-400 font-bold tracking-widest text-sm uppercase">
                     {slide.badge}
                   </span>
                 </div>
@@ -88,7 +88,7 @@ export default function HeroSection() {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`h-[3px] transition-all duration-300 ${
-                currentSlide === index ? 'w-8 bg-secondary' : 'w-4 bg-white/30 hover:bg-white/60'
+                currentSlide === index ? 'w-8 bg-sky-400' : 'w-4 bg-white/30 hover:bg-white/60'
               }`}
             />
           ))}
