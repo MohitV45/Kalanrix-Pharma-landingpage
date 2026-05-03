@@ -29,15 +29,21 @@ export const metadata: Metadata = {
   },
 }
 
+import Preloader from '@/components/preloader'
+import SmoothScroll from '@/components/smooth-scroll'
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background scroll-smooth">
+    <html lang="en" className="bg-background">
       <body className="font-sans antialiased">
-        {children}
+        <Preloader />
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

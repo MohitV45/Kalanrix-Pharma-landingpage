@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -6,13 +8,13 @@
 @theme inline {
   /* Backgrounds */
   --color-background: #ffffff; /* Pure White */
-  --color-foreground: #1e293b; /* Dark Slate */
+  --color-foreground: #0f172a; /* Slate 900 */
   
   --color-card: #ffffff;
-  --color-card-foreground: #1e293b;
+  --color-card-foreground: #0f172a;
   
   --color-popover: #ffffff;
-  --color-popover-foreground: #1e293b;
+  --color-popover-foreground: #0f172a;
   
   /* Brand Colors - Olive Green & Blue */
   --color-primary: #9eb52d; /* Kalanrix Olive Green */
@@ -22,20 +24,20 @@
   --color-secondary-foreground: #ffffff;
   
   /* UI Elements */
-  --color-muted: #f1f5f9; 
+  --color-muted: #f8fafc; 
   --color-muted-foreground: #64748b;
   
-  --color-accent: #f8fafc;
+  --color-accent: #f1f5f9;
   --color-accent-foreground: #0f172a;
   
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
   
-  --color-border: #e2e8f0;
-  --color-input: #e2e8f0;
+  --color-border: #f1f5f9;
+  --color-input: #f1f5f9;
   --color-ring: #9eb52d;
   
-  --radius: 0.375rem; 
+  --radius: 1rem; 
 }
 
 @layer base {
@@ -43,10 +45,29 @@
     border-color: var(--color-border);
     outline-color: color-mix(in srgb, var(--color-ring) 50%, transparent);
   }
+  
+  html {
+    scroll-padding-top: 100px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(158, 181, 45, 0.2);
+    color: #0f172a;
   }
 }
 
@@ -54,8 +75,74 @@
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
   }
+  
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Enhanced Glass Effects */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Text Gradients */
+  .text-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #9eb52d 0%, #7a8c22 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f8fafc;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 5px;
+    border: 2px solid #f8fafc;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  /* Noise Texture Overlay */
+  .bg-noise {
+    position: relative;
+  }
+  
+  .bg-noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 }

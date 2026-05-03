@@ -1,88 +1,91 @@
-'use client'
-
-import { BrainCircuit, Database, Network, Fingerprint, LineChart, Lock } from 'lucide-react'
+import ScrollReveal from './scroll-reveal'
+import { Microscope, FlaskConical, Truck, ShieldCheck, Users, Activity } from 'lucide-react'
 
 const features = [
   {
-    icon: BrainCircuit,
-    title: "Predictive AI Models",
-    description: "Identify patient risks before they escalate using our proprietary machine learning algorithms.",
-    extra: "Processes up to 10M records per second with 99.9% accuracy."
+    icon: Microscope,
+    title: "Advanced R&D",
+    description: "Our dedicated research team focuses on developing innovative formulations to address unmet medical needs.",
+    extra: "State-of-the-art laboratory facilities in compliance with global standards."
   },
   {
-    icon: Database,
-    title: "Unified Data Lakes",
-    description: "Centralize all fragmented healthcare data into a single, compliant, and searchable repository.",
-    extra: "Seamless integration with Epic, Cerner, and legacy systems."
+    icon: ShieldCheck,
+    title: "Quality Assurance",
+    description: "Every product undergoes rigorous testing in our WHO-GMP certified facilities to ensure safety and efficacy.",
+    extra: "Zero-tolerance policy for impurities and strict batch consistency."
   },
   {
-    icon: Network,
-    title: "Interoperable APIs",
-    description: "Connect your entire tech stack effortlessly with our HL7/FHIR compliant endpoints.",
-    extra: "Developer-first documentation and 99.99% uptime SLA."
+    icon: FlaskConical,
+    title: "Diverse Portfolio",
+    description: "Comprehensive range of medicines across Cardiology, Neurology, Gastroenterology, and more.",
+    extra: "Over 150+ formulations currently active in the Indian market."
   },
   {
-    icon: Fingerprint,
-    title: "Biometric Security",
-    description: "Military-grade encryption and access controls ensuring absolute patient data privacy.",
-    extra: "HIPAA, GDPR, and SOC2 Type II certified."
+    icon: Truck,
+    title: "Ethical Supply Chain",
+    description: "Temperature-controlled logistics and distribution network reaching the remotest corners of India.",
+    extra: "Real-time tracking and cold-chain integrity for sensitive medicines."
   },
   {
-    icon: LineChart,
-    title: "Real-Time Analytics",
-    description: "Actionable insights delivered instantly via customizable, drag-and-drop dashboards.",
-    extra: "Export reports instantly or schedule automated distributions."
+    icon: Users,
+    title: "Patient-Centricity",
+    description: "Developing affordable healthcare solutions without compromising on the quality of active ingredients.",
+    extra: "Committed to improving accessibility for underprivileged communities."
   },
   {
-    icon: Lock,
-    title: "Zero-Trust Architecture",
-    description: "Continuous verification across the network to prevent breaches and secure sensitive IP.",
-    extra: "Automated threat hunting and anomaly detection."
+    icon: Activity,
+    title: "Modern Marketing",
+    description: "Scientific and ethical pharmaceutical marketing practices driven by medical data and expertise.",
+    extra: "Trained professionals bridging the gap between medicine and practitioners."
   }
 ]
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-32 bg-background relative z-10">
+    <section id="features" className="py-32 bg-white relative z-10 overflow-hidden">
       {/* Decorative background gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="mb-20">
-          <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">Core Features</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Engineered for Scale</h2>
-          <p className="text-slate-400 max-w-2xl text-lg">
-            Everything you need to modernize your healthcare infrastructure, built from the ground up for performance and security.
-          </p>
-        </div>
+        
+        <ScrollReveal direction="up">
+          <div className="mb-20 text-center">
+            <span className="text-primary font-bold uppercase tracking-[0.2em] text-xs mb-3 block">Corporate Pillars</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Our Commitment to Excellence</h2>
+            <p className="text-slate-600 max-w-2xl text-lg mx-auto">
+              Built on a foundation of ethics and innovation, Kalanrix Pharma is dedicated to transforming the healthcare landscape of India.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, i) => (
-            <div 
-              key={i} 
-              className="group glass p-8 rounded-2xl hover:-translate-y-2 hover-glow transition-all duration-500 flex flex-col h-full overflow-hidden relative cursor-default"
-            >
-              {/* Animated subtle border gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-primary/10 group-hover:border-primary/30 transition-colors duration-300">
-                  <feature.icon className="w-7 h-7 text-white group-hover:text-primary transition-colors duration-300 group-hover:rotate-6 group-hover:scale-110" />
-                </div>
+            <ScrollReveal key={i} direction="up" delay={0.1 * i}>
+              <div 
+                className="group p-8 rounded-3xl border border-slate-200 bg-white hover:border-primary/30 hover:shadow-[0_30px_60px_rgb(0,0,0,0.08)] transition-all duration-500 flex flex-col h-full relative cursor-default overflow-hidden"
+              >
+                {/* Animated subtle border gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-slate-400 leading-relaxed mb-4">{feature.description}</p>
-                
-                {/* Extra text revealed on hover */}
-                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
-                  <div className="overflow-hidden">
-                    <p className="text-sm text-primary/90 font-medium pt-2 border-t border-white/10 mt-2">
-                      {feature.extra}
-                    </p>
+                <div className="relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 group-hover:bg-primary/10 group-hover:border-primary/20 transition-all duration-500">
+                    <feature.icon className="w-7 h-7 text-slate-600 group-hover:text-primary transition-all duration-500 group-hover:scale-110" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-primary transition-colors">{feature.title}</h3>
+                  <p className="text-slate-600 leading-relaxed mb-6">{feature.description}</p>
+                  
+                  {/* Extra text revealed on hover */}
+                  <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+                    <div className="overflow-hidden">
+                      <p className="text-sm text-slate-500 font-medium pt-4 border-t border-slate-100">
+                        {feature.extra}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
