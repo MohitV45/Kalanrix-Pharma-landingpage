@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Backgrounds */
+  --color-background: #ffffff; /* Pure White */
+  --color-foreground: #1e293b; /* Dark Slate */
+  
+  --color-card: #ffffff;
+  --color-card-foreground: #1e293b;
+  
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1e293b;
+  
+  /* Brand Colors - Olive Green & Blue */
+  --color-primary: #9eb52d; /* Kalanrix Olive Green */
+  --color-primary-foreground: #ffffff; 
+  
+  --color-secondary: #1e3a8a; /* Deep Corporate Blue */
+  --color-secondary-foreground: #ffffff;
+  
+  /* UI Elements */
+  --color-muted: #f1f5f9; 
+  --color-muted-foreground: #64748b;
+  
+  --color-accent: #f8fafc;
+  --color-accent-foreground: #0f172a;
+  
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #9eb52d;
+  
+  --radius: 0.375rem; 
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in srgb, var(--color-ring) 50%, transparent);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
