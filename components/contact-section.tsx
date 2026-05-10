@@ -43,8 +43,9 @@ export default function ContactSection() {
                         <div>
                           <h4 className="text-slate-400 font-bold text-xs uppercase tracking-widest mb-2">Main Office</h4>
                           <p className="text-white font-medium leading-relaxed">
-                            Thirumalaikodi, Vellore,<br/>
-                            Tamil Nadu - 632055
+                            679/2A1B, M M Nagar, Sripuram,<br/>
+                            Sholinghur Taulk, Ranipet-631102,<br/>
+                            Tamilnadu
                           </p>
                         </div>
                       </div>
