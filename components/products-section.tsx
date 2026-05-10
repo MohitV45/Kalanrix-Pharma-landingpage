@@ -2,7 +2,7 @@
 
 import ScrollReveal from './scroll-reveal'
 import Image from 'next/image'
-import { Shield, Award, CheckCircle, Globe, ExternalLink, X } from 'lucide-react'
+import { Shield, Award, CheckCircle, Globe, ExternalLink, ArrowLeft } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -181,9 +181,9 @@ export default function ProductsSection() {
             >
               <button 
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-6 right-6 z-20 w-12 h-12 bg-slate-900/50 hover:bg-slate-900 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-all border border-white/10"
+                className="absolute top-6 left-6 z-20 w-12 h-12 bg-slate-900/50 hover:bg-slate-900 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-all border border-white/10"
               >
-                <X className="w-6 h-6" />
+                <ArrowLeft className="w-6 h-6" />
               </button>
 
               <div className="relative w-full h-full p-8 md:p-16 flex items-center justify-center">
