@@ -156,53 +156,75 @@ export default function ProductsSection() {
       </div>
 
       {/* Product Image Modal */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {selectedProduct && (
           <motion.div 
+            key="product-modal"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 overflow-hidden"
           >
+            {/* Dark Overlay */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProduct(null)}
-              className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl"
+              className="absolute inset-0 bg-black/95 backdrop-blur-2xl cursor-zoom-out"
             />
             
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl aspect-[4/5] md:aspect-square bg-white rounded-3xl overflow-hidden shadow-2xl z-10"
+            {/* Exit Button (Top Left of Screen) */}
+            <motion.button 
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              onClick={() => setSelectedProduct(null)}
+              className="absolute top-8 left-8 z-[110] flex items-center gap-3 text-white/70 hover:text-white transition-colors group"
             >
-              <button 
-                onClick={() => setSelectedProduct(null)}
-                className="absolute top-6 left-6 z-20 w-12 h-12 bg-slate-900/50 hover:bg-slate-900 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-all border border-white/10"
-              >
+              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all">
                 <ArrowLeft className="w-6 h-6" />
-              </button>
+              </div>
+              <span className="font-bold tracking-widest text-xs uppercase hidden md:block">Close</span>
+            </motion.button>
 
-              <div className="relative w-full h-full p-8 md:p-16 flex items-center justify-center">
+            {/* Modal Content */}
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className="relative w-full max-w-5xl aspect-[4/5] md:aspect-square bg-white rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] z-10 flex flex-col"
+            >
+              <div className="relative flex-1 w-full p-8 md:p-20 flex items-center justify-center bg-white">
                 <Image 
                   src={selectedProduct.src} 
                   alt={selectedProduct.name} 
                   fill
-                  className="object-contain p-8"
+                  className="object-contain p-4 md:p-12"
                   priority
                 />
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-white via-white/95 to-transparent">
-                <span className="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-2 block">
-                  {selectedProduct.type}
-                </span>
-                <h3 className="text-3xl font-bold text-slate-900">
-                  {selectedProduct.name}
-                </h3>
+              <div className="p-8 md:p-12 bg-white border-t border-slate-100">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                  <div>
+                    <span className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary font-bold text-[10px] uppercase tracking-widest rounded-full mb-4">
+                      {selectedProduct.type}
+                    </span>
+                    <h3 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">
+                      {selectedProduct.name}
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex flex-col items-end">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Quality Standard</span>
+                      <span className="text-slate-900 font-bold">GMP Certified</span>
+                    </div>
+                    <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-primary" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
