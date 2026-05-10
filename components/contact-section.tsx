@@ -86,17 +86,17 @@ export default function ContactSection() {
           {/* Map Embed */}
           <div className="lg:col-span-7">
             <ScrollReveal direction="right" delay={0.4}>
-              <div className="h-[500px] lg:h-full w-full rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl group relative">
+              <div className="h-[500px] lg:h-full min-h-[500px] w-full rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl group relative">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7779.18341155458!2d79.0894175!3d12.86962705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad3ebdd01d58c3%3A0xef89ec36b49f31eb!2sThirumalaikodi%2C%20Vellore%2C%20Tamil%20Nadu%20632055!5e0!3m2!1sen!2sin!4v1778399750204!5m2!1sen!2sin" 
+                  src="https://maps.google.com/maps?q=12.8674387,79.0899245&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                   width="100%" 
                   height="100%" 
-                  style={{ border: 0, filter: 'grayscale(1) contrast(1.2) brightness(0.9)' }} 
+                  style={{ border: 0 }} 
                   allowFullScreen={false} 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Kalanrix Office Map"
-                  className="absolute inset-0 group-hover:filter-none transition-all duration-700"
+                  className="absolute inset-0 transition-all duration-700"
                 ></iframe>
                 <div className="absolute top-8 right-8 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl border border-white/50 pointer-events-none transition-all duration-500 group-hover:opacity-0">
                   <span className="text-slate-900 font-bold text-sm flex items-center gap-2">
