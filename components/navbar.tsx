@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { PhoneCall } from 'lucide-react'
 
 export default function Navbar() {
@@ -40,14 +41,17 @@ export default function Navbar() {
             className="flex items-center"
           >
             <div className={`relative transition-all duration-500 ${scrolled ? 'h-10 w-24' : 'h-14 w-32'}`}>
-              <img 
+              <Image 
                 src="/logo.png" 
                 alt="Kalanrix Logo" 
-                className="h-full w-full object-contain brightness-0 invert"
+                fill
+                className="object-contain brightness-0 invert"
+                priority
               />
             </div>
           </motion.div>
         </div>
+
 
         {/* Center: Links */}
         <div className={`hidden lg:flex items-center gap-1 p-1 rounded-full transition-all duration-500 ${

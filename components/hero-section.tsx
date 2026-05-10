@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const slides = [
@@ -49,11 +50,18 @@ export default function HeroSection() {
           transition={{ duration: 1 }}
           className="absolute inset-0"
         >
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('${slides[currentSlide].image}')` }}
-          />
+          <div className="absolute inset-0">
+            <Image 
+              src={slides[currentSlide].image}
+              alt="Hero Background"
+              fill
+              priority
+              quality={90}
+              className="object-cover"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/60 to-transparent"></div>
+
           
           <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center">
             <div className="max-w-2xl mt-24 text-left">

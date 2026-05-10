@@ -43,9 +43,8 @@ export default function ContactSection() {
                         <div>
                           <h4 className="text-slate-400 font-bold text-xs uppercase tracking-widest mb-2">Main Office</h4>
                           <p className="text-white font-medium leading-relaxed">
-                            679/2A1B, M M Nagar Sripuram,<br/>
-                            Sholinghur Taluk, Arakkonam,<br/>
-                            Vellore, Tamil Nadu - 631102
+                            Thirumalaikodi, Vellore,<br/>
+                            Tamil Nadu - 632055
                           </p>
                         </div>
                       </div>
@@ -88,7 +87,7 @@ export default function ContactSection() {
             <ScrollReveal direction="right" delay={0.4}>
               <div className="h-[500px] lg:h-full w-full rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl group relative">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.666114389146!2d80.2458652!3d13.0645479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526615b136894b%3A0x6b7782b57117e0!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7779.18341155458!2d79.0894175!3d12.86962705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad3ebdd01d58c3%3A0xef89ec36b49f31eb!2sThirumalaikodi%2C%20Vellore%2C%20Tamil%20Nadu%20632055!5e0!3m2!1sen!2sin!4v1778399750204!5m2!1sen!2sin" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0, filter: 'grayscale(1) contrast(1.2) brightness(0.9)' }} 

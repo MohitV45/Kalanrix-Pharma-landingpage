@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const Preloader = () => {
   const [loading, setLoading] = useState(true)
@@ -27,14 +28,8 @@ const Preloader = () => {
         .logo-wrapper {
           position: relative;
           width: 200px;
-          height: auto;
+          height: 80px;
           animation: pulse 2s ease-in-out infinite;
-        }
-
-        .logo-wrapper img {
-          width: 100%;
-          height: auto;
-          object-fit: contain;
         }
 
         @keyframes pulse {
@@ -69,8 +64,15 @@ const Preloader = () => {
       
       <div className="loader-container">
         <div className="logo-wrapper">
-          <img src="/logo.png" alt="Kalanrix Pharma" />
+          <Image 
+            src="/logo.png" 
+            alt="Kalanrix Pharma" 
+            fill
+            priority
+            className="object-contain"
+          />
         </div>
+
         <div className="line-container">
           <div className="line-fill" />
         </div>

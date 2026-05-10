@@ -1,15 +1,26 @@
 'use client'
 
 import ScrollReveal from './scroll-reveal'
+import Image from 'next/image'
 import { Shield, Award, CheckCircle, Globe, ExternalLink } from 'lucide-react'
 
 // Placeholder images for products
 const productImages = [
-  { src: "/products/product1.png", name: "Premium Capsules", type: "Nutraceutical" },
-  { src: "/products/product2.png", name: "Cardiac Support", type: "Cardiology" },
-  { src: "/products/product3.png", name: "Advanced Antibiotics", type: "Infectious Disease" },
-  { src: "/products/product4.png", name: "Gastro Relief", type: "Gastroenterology" }
+  { src: "/acekal p.png", name: "Acekal-P", type: "Analgesic" },
+  { src: "/ACEKAL P MR.png", name: "AcekalP-MR", type: "Muscle Relaxant" },
+  { src: "/HEALGEL.png", name: "HEALLIE GEL", type: "Pain Relief Gel" },
+  { src: "/IGGMET VGM2.png", name: "Igemet VGM2", type: "Antidiabetic" },
+  { src: "/IGGMET VGM1.png", name: "Iggmet VGM1", type: "Antidiabetic" },
+  { src: "/igg pg2.png", name: "Iggmet-PG2", type: "Antidiabetic" },
+  { src: "/iggmet vm.png", name: "Iggmet-VM", type: "Antidiabetic" },
+  { src: "/iggmet g1.png", name: "IGGMET-G1", type: "Antidiabetic" },
+  { src: "/iggmet g2.png", name: "IGGMET-G2", type: "Antidiabetic" },
+  { src: "/PREGA.png", name: "PREGATRAZ-M75", type: "Neuropathic Pain" },
+  { src: "/sermont lc.png", name: "Sermont-LC", type: "Antiallergic" },
+  { src: "/telme calm 40.png", name: "Telmecalm 40", type: "Antihypertensive" }
 ]
+
+
 
 export default function ProductsSection() {
   return (
@@ -57,13 +68,16 @@ export default function ProductsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {productImages.map((product, i) => (
             <ScrollReveal key={i} direction="up" delay={0.1 * i}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-3">
+              <div className="group relative bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:z-10">
                 <div className="aspect-[4/5] w-full relative overflow-hidden">
-                  <img 
+                  <Image 
                     src={product.src} 
                     alt={product.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-contain p-6 group-hover:scale-125 transition-transform duration-500 ease-out"
                   />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-8">
                     <button className="w-full py-3 bg-white text-slate-900 font-bold rounded-xl flex items-center justify-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-xl">
                       View Details <ExternalLink className="w-4 h-4" />

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Facebook, Twitter, Linkedin, Instagram, ArrowUp } from 'lucide-react'
 
 export default function Footer() {
@@ -17,11 +18,15 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="lg:col-span-1 space-y-6">
-            <img 
-              src="/logo.png" 
-              alt="Kalanrix Logo" 
-              className="h-14 w-auto brightness-0 invert opacity-90"
-            />
+            <div className="relative h-14 w-40">
+              <Image 
+                src="/logo.png" 
+                alt="Kalanrix Logo" 
+                fill
+                className="object-contain brightness-0 invert opacity-90"
+              />
+            </div>
+
             <p className="text-sm leading-relaxed max-w-xs">
               Dedicated to delivering innovative pharmaceutical solutions and improving global healthcare standards through research and excellence.
             </p>
