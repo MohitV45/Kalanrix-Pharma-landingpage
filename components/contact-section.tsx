@@ -28,8 +28,8 @@ export default function ContactSection() {
             <ScrollReveal direction="left" delay={0.2}>
               <div className="bg-slate-900 text-white p-10 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden group h-full">
                 {/* Abstract background elements */}
-                <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/20 blur-[80px] rounded-full group-hover:bg-primary/30 transition-all duration-700"></div>
-                <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-blue-500/10 blur-[80px] rounded-full"></div>
+                <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/20 blur-[40px] rounded-full group-hover:bg-primary/30 transition-all duration-700 will-change-transform transform-gpu"></div>
+                <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-blue-500/10 blur-[40px] rounded-full will-change-transform transform-gpu"></div>
                 
                 <div className="relative z-10 space-y-10">
                   <div>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight, Download } from 'lucide-react'
 
 const slides = [
   {
@@ -107,6 +107,18 @@ export default function HeroSection() {
                   </span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                 </a>
+                
+                <a 
+                  href="/product-catalogue.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group relative overflow-hidden bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 font-bold rounded-full shadow-2xl transition-all duration-500 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.2em] w-fit"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Product Catalogue <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                  </span>
+                  <div className="absolute inset-0 bg-white/10 -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                </a>
               </motion.div>
             </div>
           </div>
@@ -120,6 +132,7 @@ export default function HeroSection() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
               className="relative h-12 flex items-center group px-2"
             >
               <div className={`h-[2px] transition-all duration-500 rounded-full ${
@@ -132,12 +145,14 @@ export default function HeroSection() {
         <div className="flex gap-6">
           <button 
             onClick={prevSlide}
+            aria-label="Previous slide"
             className="group w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md"
           >
             <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
           </button>
           <button 
             onClick={nextSlide}
+            aria-label="Next slide"
             className="group w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md"
           >
             <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />

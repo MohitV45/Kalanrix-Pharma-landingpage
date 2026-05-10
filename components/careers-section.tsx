@@ -20,7 +20,7 @@ export default function CareersSection() {
   return (
     <section id="careers" className="py-32 bg-slate-50/50 relative overflow-hidden border-t border-slate-100">
       {/* Subtle background glow */}
-      <div className="absolute -bottom-24 -right-24 w-[600px] h-[600px] opacity-[0.05] pointer-events-none bg-primary blur-[120px] rounded-full"></div>
+      <div className="absolute -bottom-24 -right-24 w-[600px] h-[600px] opacity-[0.05] pointer-events-none bg-primary blur-[40px] rounded-full will-change-transform transform-gpu"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         

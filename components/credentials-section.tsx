@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import ScrollReveal from './scroll-reveal'
 
 export default function CredentialsSection() {
@@ -11,8 +12,8 @@ export default function CredentialsSection() {
   return (
     <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
       {/* Background glow effects */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/20 blur-[120px] rounded-full"></div>
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 blur-[120px] rounded-full"></div>
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/20 blur-[60px] rounded-full will-change-transform transform-gpu"></div>
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 blur-[60px] rounded-full will-change-transform transform-gpu"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
@@ -36,6 +37,28 @@ export default function CredentialsSection() {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Certification Logos */}
+        <ScrollReveal direction="up" delay={0.5}>
+          <div className="mt-16 pt-8 border-t border-white/5 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 hover:opacity-100 transition-opacity duration-500">
+            {[
+              { src: "/gmp.png", alt: "GMP Certified" },
+              { src: "/iso-logo.png", alt: "ISO 9001:2015" },
+              { src: "/halal-logo.png", alt: "Halal Quality" }
+            ].map((logo, idx) => (
+              <div key={idx} className="relative h-12 w-24 md:h-20 md:w-40 grayscale invert hover:grayscale-0 hover:invert-0 transition-all duration-500">
+                <Image 
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  width={160}
+                  height={80}
+                  className="object-contain w-full h-full"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Outfit } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
@@ -16,9 +16,17 @@ const outfit = Outfit({
 });
 
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export const metadata: Metadata = {
-  title: 'Pharmagen - Premium Healthcare Solutions',
-  description: 'Delivering high-quality, affordable medical solutions with trust and innovation',
+  title: 'Kalanrix Pharma | Innovative Healthcare Solutions & Excellence',
+  description: 'Kalanrix Pharmaceutical is a leading provider of high-quality healthcare solutions, committed to excellence and global standards in pharmaceutical manufacturing and research.',
+  keywords: 'Kalanrix, Pharmaceutical, Healthcare, GMP Certified, Medicines, Pharma India, Healthcare Excellence',
+  authors: [{ name: 'Kalanrix Pharma' }],
   generator: 'v0.app',
   icons: {
     icon: [

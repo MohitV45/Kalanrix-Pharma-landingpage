@@ -67,7 +67,8 @@ const Preloader = () => {
           <Image 
             src="/logo.png" 
             alt="Kalanrix Pharma" 
-            fill
+            width={200}
+            height={80}
             priority
             className="object-contain"
           />

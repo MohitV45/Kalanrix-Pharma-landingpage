@@ -13,7 +13,7 @@ export default function AboutSection() {
           
           {/* Left: About Us Content */}
           <ScrollReveal direction="left" duration={1}>
-            <div className="bg-blue-200/60 p-8 md:p-10 rounded-3xl border border-blue-300 shadow-[0_8px_30px_rgb(0,0,0,0.02)] space-y-6 transition-all duration-500
+            <div className="bg-blue-200/60 p-8 md:p-10 rounded-3xl border border-blue-300 shadow-[0_8px_30px_rgb(0,0,0,0.02)] space-y-6 transition-all duration-500 will-change-transform will-change-filter
                            group-hover/about:blur-[4px] group-hover/about:opacity-50 group-hover/about:scale-[0.98]
                            hover:!blur-none hover:!opacity-100 hover:!scale-[1.03] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-primary text-sm font-semibold rounded uppercase tracking-wider shadow-sm border border-blue-100/50">
@@ -38,7 +38,7 @@ export default function AboutSection() {
             
             {/* Vision */}
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="group bg-emerald-100/80 p-6 rounded-2xl border border-emerald-200 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex gap-4 transition-all duration-500
+              <div className="group bg-emerald-100/80 p-6 rounded-2xl border border-emerald-200 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex gap-4 transition-all duration-500 will-change-transform will-change-filter
                              group-hover/about:blur-[4px] group-hover/about:opacity-50 group-hover/about:scale-[0.98]
                              hover:!blur-none hover:!opacity-100 hover:!scale-[1.03] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)]">
                 <div className="shrink-0">
@@ -57,7 +57,7 @@ export default function AboutSection() {
 
             {/* Mission */}
             <ScrollReveal direction="right" delay={0.4}>
-              <div className="group bg-slate-200/80 p-6 rounded-2xl border border-slate-300 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex gap-4 transition-all duration-500
+              <div className="group bg-slate-200/80 p-6 rounded-2xl border border-slate-300 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex gap-4 transition-all duration-500 will-change-transform will-change-filter
                              group-hover/about:blur-[4px] group-hover/about:opacity-50 group-hover/about:scale-[0.98]
                              hover:!blur-none hover:!opacity-100 hover:!scale-[1.03] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)]">
                 <div className="shrink-0">
@@ -76,7 +76,7 @@ export default function AboutSection() {
 
             {/* Values */}
             <ScrollReveal direction="right" delay={0.6}>
-              <div className="group bg-orange-100/80 p-6 rounded-2xl border border-orange-200 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex gap-4 transition-all duration-500
+              <div className="group bg-orange-100/80 p-6 rounded-2xl border border-orange-200 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex gap-4 transition-all duration-500 will-change-transform will-change-filter
                              group-hover/about:blur-[4px] group-hover/about:opacity-50 group-hover/about:scale-[0.98]
                              hover:!blur-none hover:!opacity-100 hover:!scale-[1.03] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)]">
                 <div className="shrink-0">
