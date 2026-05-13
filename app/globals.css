@@ -21,7 +21,7 @@
   --color-primary: #9eb52d; /* Kalanrix Olive Green */
   --color-primary-foreground: #ffffff; 
   
-  --color-secondary: #1e3a8a; /* Deep Corporate Blue */
+  --color-secondary: #3b82f6; /* Lighter Corporate Blue */
   --color-secondary-foreground: #ffffff;
   
   /* UI Elements */
@@ -103,7 +103,7 @@
 
   /* Text Gradients */
   .text-gradient {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #3b82f6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

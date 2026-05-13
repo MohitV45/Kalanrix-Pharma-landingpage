@@ -8,10 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 // Placeholder images for products
 const productImages = [
-  { src: "/acekal p.png", name: "Acekal-P", type: "Analgesic" },
-  { src: "/ACEKAL P MR.png", name: "AcekalP-MR", type: "Muscle Relaxant" },
-  { src: "/HEALGEL.png", name: "HEALLIE GEL", type: "Pain Relief Gel" },
-  { src: "/IGGMET VGM2.png", name: "Igemet VGM2", type: "Antidiabetic" },
+  { src: "/acekal-p.jpeg", name: "Acekal-P", type: "Analgesic" },
+  { src: "/acekalp-sp.jpeg", name: "Acekalp-SP", type: "Analgesic & Anti-inflammatory" },
+  { src: "/heallie-gel.jpeg", name: "HEALLIE GEL", type: "Pain Relief Gel" },
+  { src: "/rabegitz-dsr.jpeg", name: "Rabegitz-DSR", type: "Gastrointestinal" },
   { src: "/IGGMET VGM1.png", name: "Iggmet VGM1", type: "Antidiabetic" },
   { src: "/igg pg2.png", name: "Iggmet-PG2", type: "Antidiabetic" },
   { src: "/iggmet vm.png", name: "Iggmet-VM", type: "Antidiabetic" },
