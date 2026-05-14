@@ -1,107 +1,116 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { PhoneCall } from 'lucide-react'
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [activeLink, setActiveLink] = useState('Home')
+  const observer = useRef<IntersectionObserver | null>(null)
 
-  const links = ['Home', 'Abouts us', 'Products', 'Careers', 'Contacts us']
+  const links = ['Home', 'About us', 'Products', 'Careers', 'Contact us']
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+    // Optimized scroll spy using IntersectionObserver
+    const options = {
+      root: null,
+      rootMargin: '-20% 0px -20% 0px', // More lenient margin
+      threshold: [0, 0.25, 0.5] // Multiple thresholds for better detection
+    }
 
-      // Manual scroll spy for better reliability
-      const scrollPosition = window.scrollY + 200 // Offset for navbar
-
-      links.forEach(link => {
-        const id = link.toLowerCase().replace(/ /g, '-')
-        const element = document.getElementById(id)
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveLink(link)
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id
+          // Map section IDs back to navbar link labels
+          const linkMap: Record<string, string> = {
+            'home': 'Home',
+            'about-us': 'About us',
+            'products': 'Products',
+            'careers': 'Careers',
+            'contact-us': 'Contact us'
+          }
+          if (linkMap[id]) {
+            setActiveLink(linkMap[id])
           }
         }
       })
     }
 
-    window.addEventListener('scroll', handleScroll)
-    // Initial check
-    handleScroll()
-    
-    return () => window.removeEventListener('scroll', handleScroll)
+    observer.current = new IntersectionObserver(handleIntersect, options)
+
+    // Wait a bit for dynamic components to mount
+    const timeoutId = setTimeout(() => {
+      links.forEach(link => {
+        const id = link.toLowerCase().replace(/ /g, '-')
+        const element = document.getElementById(id)
+        if (element) {
+          observer.current?.observe(element)
+        }
+      })
+    }, 1000)
+
+    return () => {
+      clearTimeout(timeoutId)
+      observer.current?.disconnect()
+    }
   }, [])
 
   return (
-    <nav className="fixed top-0 w-full z-50 transition-all duration-700 flex justify-center will-change-transform will-change-background py-8">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-7xl mx-auto flex items-center justify-between transition-all duration-700 ease-in-out py-6 px-10 border border-slate-200 rounded-full bg-slate-50/95 backdrop-blur-md shadow-lg"
-      >
-        {/* Left: Logo */}
+    <nav className="fixed top-0 w-full z-50 flex justify-center py-4 md:py-8">
+      <div className="w-[95%] max-w-7xl mx-auto flex items-center justify-between py-3 md:py-4 px-6 md:px-10 border border-slate-200 rounded-full bg-slate-50/95 backdrop-blur-md shadow-lg">
+        {/* Left: Logo - Optimized for LCP and Layout */}
         <a href="#home" className="flex items-center group cursor-pointer" onClick={() => setActiveLink('Home')}>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center"
-          >
-            <div className="relative transition-all duration-500 h-20 w-60">
+          <div className="flex items-center">
+            <div className="relative h-[40px] w-[180px] md:h-[50px] md:w-[220px]">
               <Image
                 src="/logo.png"
-                alt="Kalanrix"
-                fill
-                className="object-contain transition-all duration-500"
+                alt="Kalanrix Pharma"
+                width={220}
+                height={50}
+                className="object-contain"
                 priority
+                quality={60}
+                sizes="(max-width: 768px) 180px, 220px"
               />
             </div>
-          </motion.div>
+          </div>
         </a>
 
-
         {/* Center: Links */}
-        <div className="hidden lg:flex items-center gap-2 p-1.5 rounded-full transition-all duration-500 bg-primary/10">
+        <div className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-slate-200/50">
           {links.map((link) => (
             <a 
               key={link} 
               href={`#${link.toLowerCase().replace(/ /g, '-')}`}
               onClick={() => setActiveLink(link)}
-              className="relative px-6 py-3.5 rounded-full text-[13px] font-bold uppercase tracking-[0.15em] transition-all duration-300"
+              className="relative px-5 py-2.5 rounded-full text-[12px] font-bold uppercase tracking-[0.1em] transition-all duration-300"
             >
-              <span className={`relative z-10 transition-colors duration-300 ${activeLink === link ? 'text-primary' : 'text-slate-600 hover:text-primary'}`}>
+              <span 
+                className={`relative z-10 transition-colors duration-300 ${
+                  activeLink === link 
+                    ? 'text-white' 
+                    : 'text-[#9eb52d] hover:text-[#8ba028]'
+                }`}
+              >
                 {link}
               </span>
               {activeLink === link && (
-                <motion.div
-                  layoutId="nav-active"
-                  className="absolute inset-0 rounded-full bg-primary/20"
-                  transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
-                />
+                <div className="absolute inset-0 rounded-full bg-slate-900 transition-all duration-300 shadow-sm" />
               )}
             </a>
           ))}
         </div>
         
-        {/* Right: CTA Button */}
+        {/* Right: CTA Button - Accessibility Fixed (Higher Contrast) */}
         <div className="hidden lg:block">
-          <motion.a
-            href="#contacts-us"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Connect with us"
-            className="flex items-center gap-3 px-8 py-3.5 rounded-full font-bold text-[12px] uppercase tracking-widest transition-all duration-500 bg-primary text-white shadow-lg shadow-primary/20"
+          <a
+            href="#contact-us"
+            className="flex items-center gap-3 px-8 py-3 rounded-full font-bold text-[11px] uppercase tracking-widest transition-all duration-300 bg-slate-900 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800 hover:scale-[1.02] active:scale-[0.98]"
           >
-            <PhoneCall className="w-4 h-4" />
+            <PhoneCall className="w-3.5 h-3.5" />
             Connect Us
-          </motion.a>
+          </a>
         </div>
 
         {/* Mobile menu toggle */}
@@ -115,7 +124,7 @@ export default function Navbar() {
             </svg>
           </div>
         </button>
-      </motion.div>
+      </div>
     </nav>
   )
 }

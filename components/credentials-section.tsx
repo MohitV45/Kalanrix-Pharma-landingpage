@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import ScrollReveal from './scroll-reveal'
 
 export default function CredentialsSection() {
   const stats = [
@@ -14,11 +13,22 @@ export default function CredentialsSection() {
       {/* Background glow effects */}
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/20 blur-[60px] rounded-full will-change-transform transform-gpu"></div>
       <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 blur-[60px] rounded-full will-change-transform transform-gpu"></div>
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/10 blur-[100px] rounded-full will-change-transform transform-gpu"></div>
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/5 blur-[100px] rounded-full will-change-transform transform-gpu"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+            A Culture of Excellence & Integrity
+          </h2>
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Our credentials reflect our commitment to maintaining the highest standards of quality and regulatory compliance in everything we do.
+          </p>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
           {stats.map((stat, idx) => (
-            <ScrollReveal key={idx} direction="up" delay={idx * 0.1}>
+            <div key={idx} className={`reveal reveal-up reveal-stagger-${(idx % 5) + 1}`}>
               <div className="text-center group">
                 <div className="relative inline-block mb-2">
                   <span className="text-4xl md:text-5xl font-extrabold tracking-tight text-white group-hover:text-primary transition-colors duration-300">
@@ -34,12 +44,12 @@ export default function CredentialsSection() {
                   {stat.label}
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
           ))}
         </div>
 
         {/* Certification Logos */}
-        <ScrollReveal direction="up" delay={0.5}>
+        <div className="reveal reveal-up reveal-stagger-2">
           <div className="mt-16 pt-8 border-t border-white/5 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 hover:opacity-100 transition-opacity duration-500">
             {[
               { src: "/gmp.png", alt: "GMP Certified" },
@@ -58,7 +68,7 @@ export default function CredentialsSection() {
               </div>
             ))}
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   )

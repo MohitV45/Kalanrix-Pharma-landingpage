@@ -49,6 +49,7 @@ export const metadata: Metadata = {
 
 import Preloader from '@/components/preloader'
 import SmoothScroll from '@/components/smooth-scroll'
+import RevealObserver from '@/components/reveal-observer'
 
 export default function RootLayout({
   children,
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
 
 
+        <RevealObserver />
         <Preloader />
         <SmoothScroll>
           {children}

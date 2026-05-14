@@ -1,4 +1,3 @@
-import ScrollReveal from './scroll-reveal'
 import { Microscope, FlaskConical, Truck, ShieldCheck, Users, Activity } from 'lucide-react'
 
 const features = [
@@ -44,24 +43,23 @@ export default function FeaturesSection() {
   return (
     <section id="features" className="py-32 bg-white relative z-10 overflow-hidden">
       {/* Decorative background gradient */}
-      {/* Decorative background gradient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[30px] pointer-events-none will-change-transform transform-gpu"></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
-        <ScrollReveal direction="up" duration={0.6}>
+        <div className="reveal reveal-up">
           <div className="mb-20 text-center">
             <span className="text-primary font-bold uppercase tracking-[0.2em] text-xs mb-3 block">Corporate Pillars</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Our Commitment to Excellence</h2>
-            <p className="text-slate-600 max-w-2xl text-lg mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-950 mb-6 tracking-tight">Our Commitment to Excellence</h2>
+            <p className="text-slate-700 max-w-2xl text-lg mx-auto">
               Built on a foundation of ethics and innovation, Kalanrix Pharma is dedicated to transforming the healthcare landscape of India.
             </p>
           </div>
-        </ScrollReveal>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, i) => (
-            <ScrollReveal key={i} direction="up" delay={0.03 * i} duration={0.5}>
+            <div key={i} className={`reveal reveal-up reveal-stagger-${(i % 5) + 1}`}>
               <div 
                 className="group p-8 rounded-3xl border border-slate-200 bg-white hover:border-primary/20 hover:shadow-[0_15px_30px_rgba(0,0,0,0.05)] transition-[transform,box-shadow,border-color] duration-300 flex flex-col h-full relative cursor-default overflow-hidden will-change-[transform,opacity]"
               >
@@ -73,20 +71,20 @@ export default function FeaturesSection() {
                     <feature.icon className="w-7 h-7 text-slate-600 group-hover:text-primary transition-all duration-300 group-hover:scale-110" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-primary transition-colors">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed mb-6">{feature.description}</p>
+                  <h3 className="text-2xl font-bold text-slate-950 mb-4 group-hover:text-primary transition-colors">{feature.title}</h3>
+                  <p className="text-slate-700 leading-relaxed mb-6">{feature.description}</p>
                   
                   {/* Extra text revealed on hover */}
                   <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
                     <div className="overflow-hidden">
-                      <p className="text-sm text-slate-500 font-medium pt-4 border-t border-slate-100">
+                      <p className="text-sm text-slate-600 font-medium pt-4 border-t border-slate-100">
                         {feature.extra}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
           ))}
         </div>
       </div>

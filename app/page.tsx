@@ -1,14 +1,14 @@
-'use client'
-
+import dynamic from 'next/dynamic'
 import Navbar from '@/components/navbar'
 import HeroSection from '@/components/hero-section'
-import AboutSection from '@/components/about-section'
-import ProductsSection from '@/components/products-section'
-import FeaturesSection from '@/components/features-section'
-import CredentialsSection from '@/components/credentials-section'
-import CareersSection from '@/components/careers-section'
-import ContactSection from '@/components/contact-section'
-import Footer from '@/components/footer'
+
+const AboutSection = dynamic(() => import('@/components/about-section'), { ssr: true })
+const ProductsSection = dynamic(() => import('@/components/products-section'), { ssr: true })
+const FeaturesSection = dynamic(() => import('@/components/features-section'), { ssr: true })
+const CredentialsSection = dynamic(() => import('@/components/credentials-section'), { ssr: true })
+const CareersSection = dynamic(() => import('@/components/careers-section'), { ssr: true })
+const ContactSection = dynamic(() => import('@/components/contact-section'), { ssr: true })
+const Footer = dynamic(() => import('@/components/footer'), { ssr: true })
 
 export default function Home() {
   return (

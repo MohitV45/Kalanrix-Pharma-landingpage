@@ -1,10 +1,8 @@
 'use client'
 
-import ScrollReveal from './scroll-reveal'
 import Image from 'next/image'
-import { Shield, Award, CheckCircle, Globe, ExternalLink, ArrowLeft } from 'lucide-react'
+import { Shield, Globe, ExternalLink, ArrowLeft } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 
 // Placeholder images for products
 const productImages = [
@@ -22,10 +20,9 @@ const productImages = [
   { src: "/telme calm 40.png", name: "Telmecalm 40", type: "Antihypertensive" }
 ]
 
-
-
 export default function ProductsSection() {
   const [selectedProduct, setSelectedProduct] = useState<null | typeof productImages[0]>(null)
+  const [isClosing, setIsClosing] = useState(false)
 
   useEffect(() => {
     if (selectedProduct) {
@@ -38,6 +35,14 @@ export default function ProductsSection() {
     }
   }, [selectedProduct])
 
+  const handleClose = () => {
+    setIsClosing(true)
+    setTimeout(() => {
+      setSelectedProduct(null)
+      setIsClosing(false)
+    }, 300)
+  }
+
   return (
     <section id="products" className="py-32 bg-slate-50/50 border-t border-slate-100 relative overflow-hidden">
       {/* Decorative background element */}
@@ -46,22 +51,22 @@ export default function ProductsSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <ScrollReveal direction="up">
+        <div className="reveal reveal-up">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-primary text-xs font-bold rounded-full uppercase tracking-widest shadow-sm border border-slate-200 mb-6">
               Our Portfolio
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-950 mb-6 tracking-tight">
               World-Class Healthcare Solutions
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
               Kalanrix products are trusted by healthcare professionals across India. All our products are manufactured under strict quality control measures and by GMP certified manufacturers.
             </p>
           </div>
-        </ScrollReveal>
+        </div>
 
         {/* Certifications Strip */}
-        <ScrollReveal direction="up" delay={0.2}>
+        <div className="reveal reveal-up reveal-delay-2">
           <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-24">
             {[
               { src: "/gmp.png", label: "GMP Certified", bg: "bg-blue-50" },
@@ -70,31 +75,27 @@ export default function ProductsSection() {
             ].map((cert, idx) => (
               <div key={idx} className="group flex items-center gap-4 bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300">
                 <div className={`w-16 h-16 ${cert.bg} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden`}>
-                  {cert.src ? (
-                    <div className="relative w-full h-full p-1 flex items-center justify-center">
-                      <Image 
-                        src={cert.src} 
-                        alt={cert.label} 
-                        width={64} 
-                        height={64} 
-                        loading="lazy"
-                        className="object-contain" 
-                      />
-                    </div>
-                  ) : (
-                    <cert.icon className={`w-8 h-8 ${cert.color}`} />
-                  )}
+                  <div className="relative w-full h-full p-1 flex items-center justify-center">
+                    <Image 
+                      src={cert.src} 
+                      alt={cert.label} 
+                      width={64} 
+                      height={64} 
+                      loading="lazy"
+                      className="object-contain" 
+                    />
+                  </div>
                 </div>
                 <span className="font-bold text-slate-800 text-base tracking-wide">{cert.label}</span>
               </div>
             ))}
           </div>
-        </ScrollReveal>
+        </div>
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {productImages.map((product, i) => (
-            <ScrollReveal key={i} direction="up" delay={0.1 * i}>
+            <div key={i} className={`reveal reveal-up reveal-stagger-${(i % 5) + 1}`}>
               <div className="group relative bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:z-10">
                 <div className="aspect-[4/5] w-full relative overflow-hidden">
                   {/* Certification Badges on Card */}
@@ -127,17 +128,17 @@ export default function ProductsSection() {
                   <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-2 block">
                     {product.type}
                   </span>
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-slate-950 group-hover:text-primary transition-colors">
                     {product.name}
                   </h3>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
           ))}
         </div>
 
         {/* View All Button */}
-        <ScrollReveal direction="up" delay={0.6}>
+        <div className="reveal reveal-up reveal-delay-5">
           <div className="mt-20 text-center">
             <a 
               href="/product-catalogue.pdf" 
@@ -151,85 +152,70 @@ export default function ProductsSection() {
               </div>
             </a>
           </div>
-        </ScrollReveal>
+        </div>
 
       </div>
 
       {/* Product Image Modal */}
-      <AnimatePresence mode="wait">
-        {selectedProduct && (
-          <motion.div 
-            key="product-modal"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 overflow-hidden"
+      {selectedProduct && (
+        <div 
+          className={`fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 overflow-hidden transition-opacity duration-300 ${isClosing ? 'opacity-0' : 'opacity-100'}`}
+        >
+          {/* Dark Overlay */}
+          <div 
+            onClick={handleClose}
+            className="absolute inset-0 bg-black/95 backdrop-blur-2xl cursor-zoom-out"
+          />
+          
+          {/* Exit Button */}
+          <button 
+            onClick={handleClose}
+            className="absolute top-8 left-8 z-[110] flex items-center gap-3 text-white/70 hover:text-white transition-colors group"
           >
-            {/* Dark Overlay */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProduct(null)}
-              className="absolute inset-0 bg-black/95 backdrop-blur-2xl cursor-zoom-out"
-            />
-            
-            {/* Exit Button (Top Left of Screen) */}
-            <motion.button 
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              onClick={() => setSelectedProduct(null)}
-              className="absolute top-8 left-8 z-[110] flex items-center gap-3 text-white/70 hover:text-white transition-colors group"
-            >
-              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all">
-                <ArrowLeft className="w-6 h-6" />
-              </div>
-              <span className="font-bold tracking-widest text-xs uppercase hidden md:block">Close</span>
-            </motion.button>
+            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all">
+              <ArrowLeft className="w-6 h-6" />
+            </div>
+            <span className="font-bold tracking-widest text-xs uppercase hidden md:block">Close</span>
+          </button>
 
-            {/* Modal Content */}
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="relative w-full max-w-5xl aspect-[4/5] md:aspect-square bg-white rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] z-10 flex flex-col"
-            >
-              <div className="relative flex-1 w-full p-8 md:p-20 flex items-center justify-center bg-white">
-                <Image 
-                  src={selectedProduct.src} 
-                  alt={selectedProduct.name} 
-                  fill
-                  className="object-contain p-4 md:p-12"
-                  priority
-                />
-              </div>
+          {/* Modal Content */}
+          <div 
+            className={`relative w-full max-w-5xl aspect-[4/5] md:aspect-square bg-white rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] z-10 flex flex-col transition-all duration-300 ${isClosing ? 'scale-90 opacity-0 translate-y-10' : 'scale-100 opacity-100 translate-y-0'}`}
+          >
+            <div className="relative flex-1 w-full p-8 md:p-20 flex items-center justify-center bg-white">
+              <Image 
+                src={selectedProduct.src} 
+                alt={selectedProduct.name} 
+                fill
+                className="object-contain p-4 md:p-12"
+                priority
+              />
+            </div>
 
-              <div className="p-8 md:p-12 bg-white border-t border-slate-100">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                  <div>
-                    <span className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary font-bold text-[10px] uppercase tracking-widest rounded-full mb-4">
-                      {selectedProduct.type}
-                    </span>
-                    <h3 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">
-                      {selectedProduct.name}
-                    </h3>
+            <div className="p-8 md:p-12 bg-white border-t border-slate-100">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                  <span className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary font-bold text-[10px] uppercase tracking-widest rounded-full mb-4">
+                    {selectedProduct.type}
+                  </span>
+                  <h3 className="text-3xl md:text-5xl font-bold text-slate-950 tracking-tight">
+                    {selectedProduct.name}
+                  </h3>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex flex-col items-end">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Quality Standard</span>
+                    <span className="text-slate-900 font-bold">GMP Certified</span>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex flex-col items-end">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Quality Standard</span>
-                      <span className="text-slate-900 font-bold">GMP Certified</span>
-                    </div>
-                    <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center">
-                      <Shield className="w-6 h-6 text-primary" />
-                    </div>
+                  <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-primary" />
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

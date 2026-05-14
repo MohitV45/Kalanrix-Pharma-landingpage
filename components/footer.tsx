@@ -62,7 +62,7 @@ export default function Footer() {
               <li><a href="#careers" className="hover:text-primary transition-colors">Careers</a></li>
               <li><a href="#credentials" className="hover:text-primary transition-colors">Certifications</a></li>
               <li><a href="/product-catalogue.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-semibold text-primary">Product Catalogue</a></li>
-              <li><a href="#contacts-us" className="hover:text-primary transition-colors">Support Center</a></li>
+              <li><a href="#contact-us" className="hover:text-primary transition-colors">Support Center</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
@@ -111,7 +111,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-400">
             &copy; {new Date().getFullYear()} KalanRix Pharma Private Limited. All rights reserved.
           </p>
           <button 
