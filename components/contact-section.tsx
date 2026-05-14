@@ -98,6 +98,17 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-4">
+                  <label htmlFor="phone" className="text-[10px] font-bold text-slate-950 uppercase tracking-widest">Mobile Number</label>
+                  <input 
+                    type="tel" 
+                    id="phone"
+                    placeholder="+91 12345 67890"
+                    className="w-full border-b border-slate-200 py-3 text-slate-950 focus:outline-none focus:border-primary transition-colors placeholder:text-slate-400 font-medium"
+                  />
+                </div>
+
+
+                <div className="space-y-4">
                   <label htmlFor="subject" className="text-[10px] font-bold text-slate-950 uppercase tracking-widest">Subject / Inquiry Type</label>
                   <input 
                     type="text" 

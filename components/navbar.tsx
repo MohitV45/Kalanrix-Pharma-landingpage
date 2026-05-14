@@ -4,8 +4,11 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { PhoneCall } from 'lucide-react'
 
+import { Menu, X } from 'lucide-react'
+
 export default function Navbar() {
   const [activeLink, setActiveLink] = useState('Home')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const observer = useRef<IntersectionObserver | null>(null)
 
   const links = ['Home', 'About us', 'Products', 'Careers', 'Contact us']
@@ -59,8 +62,8 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 flex justify-center py-4 md:py-8">
       <div className="w-[95%] max-w-7xl mx-auto flex items-center justify-between py-3 md:py-4 px-6 md:px-10 border border-slate-200 rounded-full bg-slate-50/95 backdrop-blur-md shadow-lg">
-        {/* Left: Logo - Optimized for LCP and Layout */}
-        <a href="#home" className="flex items-center group cursor-pointer" onClick={() => setActiveLink('Home')}>
+        {/* Left: Logo */}
+        <a href="#home" className="flex items-center group cursor-pointer" onClick={() => { setActiveLink('Home'); setIsMenuOpen(false); }}>
           <div className="flex items-center">
             <div className="relative h-[40px] w-[180px] md:h-[50px] md:w-[220px]">
               <Image
@@ -77,7 +80,7 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Center: Links */}
+        {/* Center: Desktop Links */}
         <div className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-slate-200/50">
           {links.map((link) => (
             <a 
@@ -102,7 +105,7 @@ export default function Navbar() {
           ))}
         </div>
         
-        {/* Right: CTA Button - Accessibility Fixed (Higher Contrast) */}
+        {/* Right: CTA - Desktop */}
         <div className="hidden lg:block">
           <a
             href="#contact-us"
@@ -115,15 +118,40 @@ export default function Navbar() {
 
         {/* Mobile menu toggle */}
         <button 
-          className="lg:hidden flex items-center w-10 h-10 justify-center text-slate-900 bg-transparent border-none cursor-pointer"
-          aria-label="Open navigation menu"
+          className="lg:hidden flex items-center justify-center w-10 h-10 text-slate-900 bg-transparent border-none cursor-pointer z-[60]"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
-          <div className="w-10 h-10 flex items-center justify-center">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-          </div>
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+
+        {/* Mobile menu overlay */}
+        <div className={`fixed inset-0 bg-slate-50/98 backdrop-blur-xl z-50 lg:hidden transition-all duration-500 flex flex-col items-center justify-center gap-8 ${
+          isMenuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-10'
+        }`}>
+          {links.map((link) => (
+            <a 
+              key={link} 
+              href={`#${link.toLowerCase().replace(/ /g, '-')}`}
+              onClick={() => {
+                setActiveLink(link)
+                setIsMenuOpen(false)
+              }}
+              className={`text-2xl font-bold uppercase tracking-widest transition-all duration-300 ${
+                activeLink === link ? 'text-[#9eb52d] scale-110' : 'text-slate-400 hover:text-[#9eb52d]'
+              }`}
+            >
+              {link}
+            </a>
+          ))}
+          <a
+            href="#contact-us"
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-8 px-10 py-4 bg-slate-900 text-white rounded-full font-bold uppercase tracking-widest shadow-xl"
+          >
+            Connect Us
+          </a>
+        </div>
       </div>
     </nav>
   )

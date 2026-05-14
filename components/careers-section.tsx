@@ -10,9 +10,10 @@ const jobs = [
   },
   {
     title: "Area Sales Manager",
-    location: "Tamil Nadu, India",
-    type: "Full Time",
-    dept: "Management"
+    location: "Submit your Resume in the below Enquiry Form",
+    type: "",
+    dept: "Management",
+    isCustom: true
   }
 ]
 
