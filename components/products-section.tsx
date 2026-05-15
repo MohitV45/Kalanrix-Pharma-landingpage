@@ -187,6 +187,7 @@ export default function ProductsSection() {
                 src={selectedProduct.src} 
                 alt={selectedProduct.name} 
                 fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
                 className="object-contain p-4 md:p-12"
                 priority
               />

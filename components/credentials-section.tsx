@@ -61,6 +61,7 @@ export default function CredentialsSection() {
                   src={logo.src} 
                   alt={logo.alt} 
                   fill
+                  sizes="(max-width: 768px) 100px, 160px"
                   className="object-contain"
                   loading="lazy"
                 />
