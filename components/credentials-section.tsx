@@ -60,9 +60,8 @@ export default function CredentialsSection() {
                 <Image 
                   src={logo.src} 
                   alt={logo.alt} 
-                  width={160}
-                  height={80}
-                  className="object-contain w-full h-full"
+                  fill
+                  className="object-contain"
                   loading="lazy"
                 />
               </div>
